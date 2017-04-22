@@ -1,0 +1,21 @@
+---
+php_fpm_version: 7.0
+php_fpm_state: present
+php_fpm_purge: no
+
+# PHP configuration parameters
+php_fpm_ini_short_open_tag: 'Off'
+php_fpm_ini_max_execution_time: 30
+php_fpm_ini_max_input_time: 60
+php_fpm_ini_memory_limit: 128M
+php_fpm_ini_error_reporting: 'E_ALL & ~E_DEPRECATED & ~E_STRICT'
+php_fpm_ini_display_errors: 'Off'
+php_fpm_ini_post_max_size: 8M
+php_fpm_ini_upload_max_filesize: 2M
+
+php_fpm_pid_file: "/run/php/php{{ php_fpm_version }}-fpm.pid"
+php_fpm_log_level: notice
+
+# PHP-FPM pool configurations
+php_fpm_remove_default_www: yes
+php_fpm_pools: []

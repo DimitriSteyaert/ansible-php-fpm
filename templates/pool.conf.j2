@@ -1,0 +1,19 @@
+;
+; {{ ansible_managed }}
+;
+
+[{{ item.name }}]
+listen = /var/run/php/php{{ php_fpm_version }}-fpm_{{ item.name }}.sock
+listen.owner = {{ item.user }}
+listen.group = {{ item.group }}
+
+user = {{ item.user }}
+group = {{ item.group }}
+
+pm = {{ item.pm|default('dynamic') }}
+pm.max_children = {{ item.pm_max_children|default('5') }}
+pm.start_servers = {{ item.pm_start_servers|default('2') }}
+pm.process_idle_timeout = {{ item.pm_process_idle_timeout|default('10s') }}
+pm.min_spare_servers = {{ item.pm_min_spare_servers|default('1') }}
+pm.max_spare_servers = {{ item.pm_max_spare_servers|default('3') }}
+pm.max_requests = {{ item.pm_max_requests|default('500') }}

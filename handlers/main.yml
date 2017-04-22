@@ -1,0 +1,17 @@
+---
+- name: Check PHP-FPM config
+  shell: "php-fpm{{ php_fpm_version }} -t"
+  register: php_fpm_configcheck
+  changed_when: php_fpm_configcheck.rc != 0
+
+- name: Restart PHP-FPM
+  service:
+    name: "php{{ php_fpm_version }}-fpm"
+    state: restarted
+  when: php_fpm_configcheck.rc == 0
+
+- name: Reload PHP-FPM
+  service:
+    name: "php{{ php_fpm_version }}-fpm"
+    state: reloaded
+  when: php_fpm_configcheck.rc == 0

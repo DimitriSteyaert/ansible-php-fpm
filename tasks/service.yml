@@ -1,0 +1,6 @@
+---
+- name: Ensure PHP-FPM is running
+  service:
+    name: "php{{ php_fpm_version }}-fpm"
+    enabled: yes
+    state: started

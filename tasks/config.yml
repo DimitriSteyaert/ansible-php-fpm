@@ -1,0 +1,30 @@
+---
+- name: Set the PHP-FPM logrotate file
+  template:
+    src: logrotate/php-fpm.j2
+    dest: "/etc/logrotate.d/php{{ php_fpm_version }}-fpm"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Set the php.ini file
+  template:
+    src: php.ini.j2
+    dest: "/etc/php/{{ php_fpm_version }}/fpm/php.ini"
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - Check PHP-FPM config
+    - Restart PHP-FPM
+
+- name: Set the php-fpm.conf file
+  template:
+    src: php-fpm.conf.j2
+    dest: "/etc/php/{{ php_fpm_version }}/fpm/php-fpm.conf"
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - Check PHP-FPM config
+    - Restart PHP-FPM

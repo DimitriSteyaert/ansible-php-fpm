@@ -1,0 +1,12 @@
+---
+- name: Install the specified version of PHP-FPM
+  apt:
+    name: "php{{ php_fpm_version }}-fpm"
+    state: "{{ php_fpm_state }}"
+    purge: "{{ php_fpm_purge }}"
+
+- name: Install additional PHP modules
+  apt:
+    name: "{{ item.name }}"
+    state: "{{ item.state }}"
+  with_items: "{{ php_fpm_modules }}"
