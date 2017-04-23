@@ -2,7 +2,7 @@
 - name: Define the pools
   template:
     src: pool.conf.j2
-    dest: "/etc/php/{{php_fpm_version}}/fpm/pool.d/{{ item.name }}.conf"
+    dest: "/etc/php/{{ php_fpm_version }}/fpm/pool.d/{{ item.name }}.conf"
     owner: root
     group: root
     mode: 0644
@@ -13,9 +13,9 @@
 
 - name: Remove default www pool
   file:
-    path: "/etc/php/{{php_fpm_version}}/fpm/pool.d/www.conf"
+    path: "/etc/php/{{ php_fpm_version }}/fpm/pool.d/www.conf"
     state: absent
-  when: "{{ php_fpm_remove_default_www }}"
+  when: php_fpm_remove_default_www
   notify:
     - Check PHP-FPM config
     - Reload PHP-FPM
