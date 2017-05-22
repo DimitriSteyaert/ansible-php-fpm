@@ -1,0 +1,33 @@
+---
+
+dependencies: []
+
+galaxy_info:
+  author: 'Dimitri Steyaert'
+  description: 'Installs PHP-FPM with the version of your choice with pool configuration'
+  company: 'Steyaert Web Services'
+  license: 'MIT'
+  min_ansible_version: '1.9'
+  platforms:
+    - name: Ubuntu
+      versions:
+        - trusty
+        - xenial
+        - yakkety
+        - zesty
+    - name: Debian
+      versions:
+        - wheezy
+        - jessie
+  galaxy_tags:
+    - development
+    - php
+    - web
+
+ansigenome_info:
+  galaxy_id: 'DimitriSteyaert'
+  travis: False
+  synopsis: |
+    This role installs and configures the PHP FastCGI Process Manager with the version of your choice and lets you manage the PHP-FPM pools and PHP modules.
+  usage: |
+    By default version 7.0 is installed but you can define the version of your choice. Just keep in mind to only define the major.minor verions and not the patch levels (eg 5.6, 7.0, 7.1,...)
